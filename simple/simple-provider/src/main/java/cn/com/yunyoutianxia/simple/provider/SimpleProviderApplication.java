@@ -14,4 +14,15 @@ public class SimpleProviderApplication {
         SpringApplication.run(SimpleProviderApplication.class, args);
     }
 
+//    @Primary
+//    @Bean
+//    @ConfigurationProperties("spring.datasource.druid.one")
+//    public DataSource dataSourceOne(){
+//        return DruidDataSourceBuilder.create().build();
+//    }
+//    @Bean
+//    @ConfigurationProperties("spring.datasource.druid.two")
+//    public DataSource dataSourceTwo(){
+//        return DruidDataSourceBuilder.create().build();
+//    }
 }
