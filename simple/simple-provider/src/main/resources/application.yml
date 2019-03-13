@@ -1,15 +1,15 @@
 spring:
   application:
     name: simple-provider
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
   datasource:
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://0.0.0.0:3306/simple?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/simple?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
     druid:
       filter: stat
       max-active: 20
@@ -24,5 +24,8 @@ spring:
       pool-prepared-statements: true
       max-open-prepared-statements: 20
       async-init: true
+  http:
+    converters:
+      preferred-json-mapper: gson
 server:
   port: 8051
