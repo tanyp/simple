@@ -1,0 +1,26 @@
+version: '2.2'
+services:
+  mysql:
+    image: mysql
+    restart: always
+    ports:
+    - "3306:3306"
+    volumes:
+    - ./data:/var/lib/mysql
+    - ./conf/my.cnf:/etc/mysql/my.cnf
+    container_name: "mysql-latest"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    networks:
+    - dev
+  simple:
+    image: simple-provider
+    restart: always
+    ports:
+    - "8051:8051"
+    container_name: "simple-1.0-SNAPSHOT"
+    networks:
+    - dev
+networks:
+  dev:
+    driver: bridge
