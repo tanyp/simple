@@ -1,6 +1,6 @@
 package cn.com.yunyoutianxia.simple.provider.service.impl;
 
-import cn.com.yunyoutianxia.simple.provider.entity.User;
+import cn.com.yunyoutianxia.simple.provider.entity.Member;
 import cn.com.yunyoutianxia.simple.provider.mapper.UserMapper;
 import cn.com.yunyoutianxia.simple.provider.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public int index(User user) {
-        return userMapper.insert(user);
+    public int index(Member member) {
+        return userMapper.insert(member);
     }
 }
