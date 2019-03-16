@@ -16,7 +16,27 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public int index(Member member) {
+    public int register(Member member) {
         return userMapper.insert(member);
+    }
+
+    @Override
+    public int login(Member member) {
+        return 0;
+    }
+
+    @Override
+    public int logout(Member member) {
+        return 0;
+    }
+
+    @Override
+    public int update(Member member) {
+        return 0;
+    }
+
+    @Override
+    public int pwd(Member member) {
+        return 0;
     }
 }
