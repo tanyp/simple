@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: simple-provider
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.0.8:3306/simple?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    druid:
+      filters: stat
+      max-active: 20
+      initial-size: 1
+      max-wait: 6000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      async-init: true
+  http:
+    converters:
+      preferred-json-mapper: gson
+  redis:
+    host: 192.168.0.8
+    port: 6379
+    password: health_123
+    ssl: false
+    timeout: 2000ms
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 20
+        min-idle: 10
+        max-wait: 15000ms
+server:
+  port: 8053

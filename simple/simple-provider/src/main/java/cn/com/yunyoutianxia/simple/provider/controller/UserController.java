@@ -5,10 +5,9 @@ import cn.com.yunyoutianxia.simple.provider.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by tanyp on 2019/3/14
@@ -24,13 +23,14 @@ public class UserController {
     private RedisTemplate<String, String> template;
 
 
-    @PostMapping("/redis")
-    public void redis() {
+    @GetMapping("/redis")
+    public void redis(HttpServletRequest request) {
         ValueOperations<String, String> kvValueOperations = template.opsForValue();
         kvValueOperations.set("key","222");
         System.out.println(kvValueOperations.get("key"));
         template.delete("key");
         System.out.println(kvValueOperations.get("key"));
+        System.out.println(request.getSession().getId());
     }
 
     @PostMapping("/register")
