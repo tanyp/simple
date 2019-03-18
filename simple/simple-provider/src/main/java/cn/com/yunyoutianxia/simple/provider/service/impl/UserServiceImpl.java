@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int login(Member member) {
-        return 0;
+    public Member login(Member member) {
+        return new Member();
     }
 
     @Override

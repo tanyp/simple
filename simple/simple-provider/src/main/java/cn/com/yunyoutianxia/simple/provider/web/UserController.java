@@ -1,5 +1,6 @@
-package cn.com.yunyoutianxia.simple.provider.controller;
+package cn.com.yunyoutianxia.simple.provider.web;
 
+import cn.com.yunyoutianxia.commons.json.JSONResultModel;
 import cn.com.yunyoutianxia.simple.provider.entity.Member;
 import cn.com.yunyoutianxia.simple.provider.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,27 +21,36 @@ public class UserController {
     private UserService us;
 
     @Autowired
-    private RedisTemplate<String, String> template;
-
+    private RedisTemplate<String, Object> manager;
 
     @GetMapping("/redis")
     public void redis(HttpServletRequest request) {
-        ValueOperations<String, String> kvValueOperations = template.opsForValue();
-        kvValueOperations.set("key","222");
+        ValueOperations<String, Object> kvValueOperations = manager.opsForValue();
+        kvValueOperations.set("key", "222");
         System.out.println(kvValueOperations.get("key"));
-        template.delete("key");
+        manager.delete("key");
         System.out.println(kvValueOperations.get("key"));
         System.out.println(request.getSession().getId());
     }
 
     @PostMapping("/register")
-    public void register(@RequestBody Member member) {
+    public JSONResultModel<Object> register(@RequestBody Member member) {
+        JSONResultModel<Object> jrm = new JSONResultModel<>();
         int index = us.register(member);
+        if (index > 0) {
+            jrm.setRet(false);
+        }
+        return jrm;
     }
 
     @PostMapping("/login")
-    public void login(@RequestBody Member member) {
-        int index = us.login(member);
+    public JSONResultModel<Object> login(@RequestBody Member member, HttpServletRequest hsr) {
+        JSONResultModel<Object> jrm = new JSONResultModel<>();
+        Member mb = us.login(member);
+        if (mb == null) {
+            jrm.setRet(false);
+        }
+        return jrm;
     }
 
     @PostMapping("/logout")

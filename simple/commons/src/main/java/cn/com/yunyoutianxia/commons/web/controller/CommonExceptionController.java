@@ -1,4 +1,4 @@
-package cn.com.yunyoutianxia.simple.provider.controller.common;
+package cn.com.yunyoutianxia.commons.web.controller;
 
 import cn.com.yunyoutianxia.commons.json.JSONResultModel;
 import org.apache.commons.lang.StringUtils;

@@ -1,4 +1,4 @@
-package cn.com.yunyoutianxia.simple.provider.controller.common;
+package cn.com.yunyoutianxia.commons.web.controller;
 
 import com.alibaba.druid.stat.DruidStatManagerFacade;
 import org.springframework.web.bind.annotation.GetMapping;

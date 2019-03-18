@@ -8,7 +8,7 @@ import cn.com.yunyoutianxia.simple.provider.entity.Member;
 public interface UserService {
     int register(Member member);
 
-    int login(Member member);
+    Member login(Member member);
 
     int logout(Member member);
 
