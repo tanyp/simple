@@ -13,7 +13,6 @@ services:
     - dev
   mysql:
     image: mysql
-    restart: always
     ports:
     - "3306:3306"
     volumes:
@@ -24,9 +23,20 @@ services:
       MYSQL_ROOT_PASSWORD: 123456
     networks:
     - dev
+  # war tomcat 运行
+  angel:
+    image: angel
+    ports:
+    - "9001:9001"
+    volumes:
+    - ./webapps:/usr/tomcat/webapps
+    - ./server/server.xml:/usr/tomcat/conf/server.xml
+    container_name: "angel-latest"
+    networks:
+    - dev
+  # Springboot jar
   simple:
     image: simple-provider
-    restart: always
     ports:
     - "8051:8051"
     container_name: "simple-1.0-SNAPSHOT"

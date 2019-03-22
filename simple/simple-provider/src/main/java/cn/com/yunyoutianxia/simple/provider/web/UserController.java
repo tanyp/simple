@@ -21,12 +21,14 @@ public class UserController {
     private UserService us;
 
     @Autowired
-    private RedisTemplate<String, Object> manager;
+    private RedisTemplate<String, String> manager;
 
     @GetMapping("/redis")
     public void redis(HttpServletRequest request) {
-        ValueOperations<String, Object> kvValueOperations = manager.opsForValue();
-        kvValueOperations.set("key", "222");
+        ValueOperations<String, String> kvValueOperations = manager.opsForValue();
+        Member member = new Member();
+        member.setId(1L);
+        kvValueOperations.set("key", "223");
         System.out.println(kvValueOperations.get("key"));
         manager.delete("key");
         System.out.println(kvValueOperations.get("key"));
